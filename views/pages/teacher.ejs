@@ -50,7 +50,15 @@
             graded: $("#graded").val()
         };
 
-        $.post('/add', data);
+        $.post('/add', data, function(result){
+            if(result == "success"){
+                tableData.push({
+            name: $("#name").val(),
+            graded: $("#graded").val()
+        });
+                $("#tabulator-example").tabulator("setData", tableData);
+            }
+    });
 
     }
 
